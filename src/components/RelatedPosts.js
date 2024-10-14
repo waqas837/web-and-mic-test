@@ -2,6 +2,32 @@ import pool from "@/lib/db";
 import Image from "next/image";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Webcam test related blogs",
+  description:
+    "Blogs and guides about Webcam, microphone and speaker tests and how run tests for your windows pc mac pc and mobile devices.",
+  keywords: ["webcam test", "microphone test", "sound test"],
+  openGraph: {
+    title: "Webcam related blogs",
+    description:
+      "Blogs and guides about Webcam, microphone and speaker tests and how run tests for your windows pc mac pc and mobile devices",
+    type: "website",
+    url: "https://webcamtest.live/",
+    image: "https://www.yourwebsite.com/og-image.jpg",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@yourtwitterhandle",
+    title: "Webcam related blogs",
+    description:
+      "Blogs and guides about Webcam, microphone and speaker tests and how run tests for your windows pc mac pc and mobile devices",
+    image: "https://webcamtest.live/twitter-image.jpg",
+  },
+  robots: "index, follow",
+  // canonical: "https://webcamtest.live/canonical-url",
+};
+
+
 const RelatedPosts = async ({ IamNOtInclude }) => {
   async function fetchAllPosts() {
     let connection = await pool.getConnection();

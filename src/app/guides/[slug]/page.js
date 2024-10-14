@@ -31,10 +31,13 @@ const PostDetailsPage = async ({ params }) => {
               </h1>
             </header>
             <figure>
-              <Image alt="later on" src={PostDetail.filePath} width={300} height={300} />
-              <figcaption>Digital art by Anonymous</figcaption>
+              <Image
+                alt="later on"
+                src={PostDetail.filePath}
+                width={300}
+                height={300}
+              />
             </figure>
-
             {/* content */}
             <div dangerouslySetInnerHTML={{ __html: PostDetail.content }} />
           </article>

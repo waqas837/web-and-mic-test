@@ -49,12 +49,6 @@ const PrivacyPolicy = () => {
         posted on this page, and we encourage you to review the policy
         periodically.
       </p>
-
-      <h2 className="text-2xl font-bold mb-2">Contact Us</h2>
-      <p>
-        If you have any questions about our privacy policy, feel free to contact
-        us at support@yourapp.com.
-      </p>
     </div>
   );
 };
