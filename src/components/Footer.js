@@ -84,6 +84,7 @@ const Footer = () => {
                 <Link
                   key={item.name}
                   href={item.href}
+                  onClick={toggleMobileMenu}
                   className={`${
                     router.pathname === item.href
                       ? "border-indigo-500 text-gray-900"

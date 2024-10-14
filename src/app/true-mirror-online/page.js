@@ -29,7 +29,7 @@ export const metadata = {
 const TrueMirror = () => {
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 p-5 text-center my-10 mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 p-5 text-center sm:mb-10 md:my-10">
         {/* Left Side part */}
         <div className="flex flex-col">
           <section>

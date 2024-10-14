@@ -95,6 +95,7 @@ const Navbar = () => {
                 <Link
                   key={item.name}
                   href={item.href}
+                  onClick={toggleMobileMenu}
                   className={`${
                     pathname === item.href
                       ? "border-b-blue-400 text-blue-500"

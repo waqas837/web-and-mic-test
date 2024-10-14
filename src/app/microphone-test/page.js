@@ -28,7 +28,7 @@ export const metadata = {
 
 const MicrophoneTest = () => {
   return (
-    <section className="py-16 my-10">
+    <section className="py-16 sm:mb-10 md:my-10">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
           Test Microphone Online
@@ -41,8 +41,8 @@ const MicrophoneTest = () => {
         <RunMicTest />
       </div>
       {/* Body Content */}
-      <main className="p-28">
-        <section className="bg-white rounded-lg   mb-8">
+      <main className="p-12">
+        <section className="bg-white rounded-lg mb-8">
           <h2 className="text-2xl font-semibold text-blue-500 mb-4 flex items-center">
             {/* <Microphone className="mr-2" /> */}
             How It Works?
