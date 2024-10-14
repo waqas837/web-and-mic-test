@@ -11,6 +11,7 @@ const Navbar = () => {
     { name: "Camera Test", href: "/" },
     { name: "Microphone Test", href: "/microphone-test" },
     { name: "Speakers Test", href: "/speakers-test" },
+    { name: "True Mirror", href: "/true-mirror-online" },
   ];
 
   const instructionsItem = { name: "Guides", href: "/guides" };
@@ -26,7 +27,12 @@ const Navbar = () => {
           <div className="flex items-center">
             <div className="flex-shrink-0">
               <Link href="/" className="text-2xl font-bold">
-                <Image alt="later on" src={"/logo2.png"} width={50} height={50} />
+                <Image
+                  alt="later on"
+                  src={"/logo2.png"}
+                  width={50}
+                  height={50}
+                />
               </Link>
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8 justify-center w-full">
@@ -37,7 +43,7 @@ const Navbar = () => {
                   className={`${
                     pathname === item.href
                       ? "border-b-blue-400 text-blue-500"
-                      : "border-transparent text-black hover:border-blue-300 hover:text-blue-300"
+                      : "border-transparent text-black hover:border-blue-500 hover:text-blue-500"
                   } inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
                 >
                   {item.name}
@@ -51,7 +57,7 @@ const Navbar = () => {
               className={`${
                 pathname === instructionsItem.href
                   ? "border-b-blue-400 text-blue-500"
-                  : "border-transparent text-black hover:border-blue-300 hover:text-blue-300"
+                  : "border-transparent text-black hover:border-blue-500 hover:text-blue-500"
               } inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
             >
               {instructionsItem.name}
@@ -92,7 +98,7 @@ const Navbar = () => {
                   className={`${
                     pathname === item.href
                       ? "border-b-blue-400 text-blue-500"
-                      : "border-transparent text-black hover:border-blue-300 hover:text-blue-300"
+                      : "border-transparent text-black hover:border-blue-500 hover:text-blue-500"
                   } block px-3 py-2 text-base font-medium border-b-2`}
                 >
                   {item.name}
@@ -103,7 +109,7 @@ const Navbar = () => {
                 className={`${
                   pathname === instructionsItem.href
                     ? "border-b-blue-400 text-blue-500"
-                    : "border-transparent text-black hover:border-blue-300 hover:text-blue-300"
+                    : "border-transparent text-black hover:border-blue-500 hover:text-blue-500"
                 } block px-3 py-2 text-base font-medium border-b-2`}
               >
                 {instructionsItem.name}

@@ -11,6 +11,7 @@ const Footer = () => {
     { name: "Camera Test", href: "/" },
     { name: "Microphone Test", href: "/microphone-test" },
     { name: "Speakers Test", href: "/speakers-test" },
+    { name: "True mirror", href: "/true-mirror-online" },
   ];
 
   const toggleMobileMenu = () => {

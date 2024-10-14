@@ -28,12 +28,12 @@ const RelatedPosts = async ({ IamNOtInclude }) => {
                 <div key={index}>
                   <article className="max-w-xs">
                     <Link href={`/guides/${val.slug}`}>
-                      <Image alt="later on"
+                      <Image
+                        alt="later on"
                         src={val.filePath}
                         width={300}
                         height={300}
                         className="mb-5 rounded-lg"
-                        alt="Image 1"
                       />
                     </Link>
                     <span className="mb-3 inline-block rounded bg-primary py-1 text-center text-xs font-semibold leading-loose">

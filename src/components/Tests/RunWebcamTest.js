@@ -1,11 +1,6 @@
 "use client";
 import React, { useEffect, useState, useRef } from "react";
-import {
-  cameraIcon,
-  infoIcon,
-  rightTickIcon,
-  StartIcon,
-} from "@/assets/SvgIcons";
+import { infoIcon, rightTickIcon } from "@/assets/SvgIcons";
 
 const RunWebcamTest = () => {
   const [cameras, setCameras] = useState([]);
@@ -42,6 +37,16 @@ const RunWebcamTest = () => {
     if (accessGranted) {
       getCameras();
     }
+    return () => {
+      if (streamRef.current) {
+        streamRef.current.getTracks().forEach((track) => {
+          track.stop();
+        });
+        secondStreamRef.current.getTracks().forEach((track) => {
+          track.stop();
+        });
+      }
+    };
   }, [accessGranted]);
 
   const requestCameraAccess = async () => {

@@ -11,7 +11,7 @@ const Blog = async () => {
       if (results.length > 0) {
         return results;
       } else {
-        return "No Data";
+        return undefined;
       }
     } catch (error) {
     } finally {
@@ -19,7 +19,7 @@ const Blog = async () => {
     }
   };
   const posts = await getallposts();
-  console.log("posts", posts);
+
   return (
     <>
       <section className="pb-10 dark:bg-dark lg:pb-20 p-10">
@@ -31,8 +31,8 @@ const Blog = async () => {
                   Our Guides
                 </h1>
                 <p className="text-base text-body-color dark:text-dark-6">
-                  There are many variations of passages of Lorem Ipsum available
-                  but the majority have suffered alteration in some form.
+                  These guides will tell you how to use the each tool for
+                  testing webcam, microphone and sound test.
                 </p>
               </div>
             </div>

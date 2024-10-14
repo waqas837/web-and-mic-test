@@ -2,26 +2,28 @@ import lazyload from "next/dynamic";
 const HeroSection = lazyload(() => import("../components/HeroSection"));
 
 export const metadata = {
-  title: "Your Page Title",
-  description: "A brief, compelling description of your page content",
+  title: "Webcam Test Free - Enjoy free",
+  description:
+    "Free resource for testing your webcam and providing extra functions like resolution checker and FPS checker. Start Testing.",
   keywords: ["keyword1", "keyword2", "keyword3"],
   openGraph: {
-    title: "Your Open Graph Title",
-    description: "A description for social media sharing",
+    title: "Webcam Test Free - Enjoy free",
+    description:
+      "Free resource for testing your webcam and providing extra functions like resolution checker and FPS checker. Start Testing",
     type: "website",
-    url: "https://www.yourwebsite.com/your-page",
+    url: "https://webcamtest.live/",
     image: "https://www.yourwebsite.com/og-image.jpg",
   },
   twitter: {
     card: "summary_large_image",
     site: "@yourtwitterhandle",
-    title: "Your Twitter Card Title",
-    description: "A description for Twitter sharing",
-    image: "https://www.yourwebsite.com/twitter-image.jpg",
+    title: "Webcam Test Free - Enjoy free",
+    description:
+      "Free resource for testing your webcam and providing extra functions like resolution checker and FPS checker. Start Testing",
+    image: "https://webcamtest.live/twitter-image.jpg",
   },
   robots: "index, follow",
-  canonical: "https://www.yourwebsite.com/canonical-url",
-  author: "Your Name or Company Name",
+  // canonical: "https://webcamtest.live/canonical-url",
 };
 
 const Home = async () => {

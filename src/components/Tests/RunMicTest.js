@@ -36,6 +36,13 @@ const RunMicTest = () => {
     if (accessGranted) {
       getMics();
     }
+    return () => {
+      if (streamRef.current) {
+        streamRef.current.getTracks().forEach((track) => {
+          track.stop();
+        });
+      }
+    }
   }, [accessGranted]);
 
   const requestMicAccess = async () => {
@@ -155,7 +162,6 @@ const RunMicTest = () => {
   };
 
   const stopTest = () => {
-    console.log({ streamRef, streamRef2 });
     streamRef.current.getTracks().forEach((track) => {
       track.stop();
     });
