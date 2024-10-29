@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { mywebsiteurl } from "./myurl";
 
 const sitemapDirectory = path.join(process.cwd(), "public", "sitemaps");
 const sitemapIndexFilePath = path.join(
@@ -30,13 +31,13 @@ function updateSitemapIndex(sitemapIndex) {
       </sitemapindex>`;
 
   const sitemapEntryRegex = new RegExp(
-    `<sitemap>\\s*<loc>https://your-blog-url\\.com/sitemaps/${sitemapFileName}</loc>[\\s\\S]*?</sitemap>`,
+    `<sitemap>\\s*<loc>${mywebsiteurl}\\.com/sitemaps/${sitemapFileName}</loc>[\\s\\S]*?</sitemap>`,
     "i"
   );
 
   const newSitemapEntry = `
     <sitemap>
-      <loc>https://your-blog-url.com/sitemaps/${sitemapFileName}</loc>
+      <loc>${mywebsiteurl}.com/sitemaps/${sitemapFileName}</loc>
       <lastmod>${new Date().toISOString()}</lastmod>
     </sitemap>
   `;
@@ -99,7 +100,7 @@ export async function appendPostToSitemap(post) {
 
   const sitemapEntry = `
     <url>
-      <loc>https://your-blog-url.com/posts/${post.slug}</loc>
+      <loc>${mywebsiteurl}/posts/${post.slug}</loc>
       <lastmod>${new Date(post.date_created_in).toISOString()}</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.7</priority>

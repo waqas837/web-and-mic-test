@@ -1,0 +1,1 @@
+export const mywebsiteurl = "https://webcamtest.live"

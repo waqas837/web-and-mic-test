@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import pool from "@/lib/db";
 import Image from "next/image";
 import Link from "next/link";

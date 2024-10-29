@@ -98,12 +98,14 @@ export default function CreatePost() {
   };
 
   const submitPost = async (e) => {
-    toast.loading("Post creating...");
     e.preventDefault(); // Prevent default form submission behavior
 
     if (!validateFields()) {
+      toast.error("Fill all fields");
+
       return;
     }
+
     const content = draftToHtml(convertToRaw(editorState.getCurrentContent()));
 
     const newPostData = {
@@ -122,7 +124,7 @@ export default function CreatePost() {
       twitterImage,
       structuredData,
       content,
-      readTime
+      readTime,
     };
 
     try {
@@ -135,6 +137,7 @@ export default function CreatePost() {
         );
       });
       formData.append("file", file);
+      toast.loading("Post creating...");
       // function to create a post
       let response = await fetch("api/createpost", {
         method: "POST",
@@ -142,7 +145,11 @@ export default function CreatePost() {
       });
       console.log("New post created response:", response);
       toast.dismiss();
-      toast.success("Post Created");
+      if (response.ok) {
+        toast.success("Post Created");
+      } else {
+        toast.error("Error in creating post.");
+      }
     } catch (error) {
       toast.error("Post failed to create");
       console.error("Error:", error);
@@ -186,7 +193,7 @@ export default function CreatePost() {
             className="block text-gray-700 font-medium mb-1"
             htmlFor="description"
           >
-            Description
+            Meta Description
           </label>
           <input
             id="description"
@@ -369,7 +376,9 @@ export default function CreatePost() {
           <label
             className="block text-gray-700 font-medium mb-1"
             htmlFor="readTime"
-          >Read TIME </label>
+          >
+            Read TIME{" "}
+          </label>
           <input
             id="readTime"
             type="number"
@@ -437,7 +446,7 @@ export default function CreatePost() {
             <p className="text-red-500 text-sm">{errors.structuredData}</p>
           )}
         </div>
-        
+
         {mounted && (
           <div>
             <label className="block text-gray-700 font-medium mb-1">

@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import pool from "@/lib/db";
 import Image from "next/image";
 import Link from "next/link";
@@ -94,9 +95,9 @@ const BlogCard = ({
 }) => {
   return (
     <Link href={`/guides/${slug}`}>
-      <section className="mb-5 w-full">
-        <div className="mb-5 overflow-hidden rounded">
-          <Image alt="later on" src={image} width={300} height={300} />
+      <section className="mb-5 w-full shadow-md p-3">
+        <div className="mb-5 overflow-hidden rounded-lg">
+          <Image className="object-cover" alt="later on" src={image} width={320} height={320} />
         </div>
         <div>
           <span className="mb-3 inline-block rounded bg-primary py-1 text-center text-xs font-semibold leading-loose">

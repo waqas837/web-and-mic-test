@@ -1,24 +1,20 @@
+export const dynamic = "force-dynamic";
 import RelatedPosts from "@/components/RelatedPosts";
-import pool from "@/lib/db";
+import fetchSinglePost from "@/lib/fetchSinglePost";
 import Image from "next/image";
+
+export async function generateMetadata({ params }) {
+  const { slug } = params;
+  const PostDetail = await fetchSinglePost(slug);
+  return {
+    title: PostDetail.title,
+    description: PostDetail.description,
+  };
+}
 
 const PostDetailsPage = async ({ params }) => {
   const { slug } = params;
-  const fetchSinglePost = async () => {
-    let connection = await pool.getConnection();
-    try {
-      const [rows] = await connection.query(
-        "SELECT * FROM posts WHERE slug = ?",
-        [slug]
-      );
-      return rows.length > 0 ? rows[0] : null;
-    } catch (error) {
-      console.log("error", error);
-    } finally {
-      connection.release();
-    }
-  };
-  const PostDetail = await fetchSinglePost();
+  const PostDetail = await fetchSinglePost(slug);
 
   return (
     <div>
@@ -32,10 +28,11 @@ const PostDetailsPage = async ({ params }) => {
             </header>
             <figure>
               <Image
-                alt="later on"
+                alt={PostDetail.title}
                 src={PostDetail.filePath}
                 width={300}
                 height={300}
+                className="w-full h-full"
               />
             </figure>
             {/* content */}
