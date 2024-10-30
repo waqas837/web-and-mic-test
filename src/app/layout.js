@@ -2,6 +2,7 @@ import Header from "../components/Navbar";
 import Footer from "../components/Footer";
 import "./globals.css";
 import Script from "next/script";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 export default async function RootLayout({ children, params: { lang } }) {
   const softwareApplication = {
@@ -88,6 +89,25 @@ export default async function RootLayout({ children, params: { lang } }) {
         <main>{children}</main>
         <Footer />
       </body>
+      {/* Google Analytics Setup */}
+      <Script
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=G-JYSD6TBT8K`}
+      />
+      <Script
+        id="google-analytics"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-JYSD6TBT8K');
+          `,
+        }}
+      />
+      {/* Modern GA4 integration */}
+      <GoogleAnalytics gaId="G-JYSD6TBT8K" />
     </html>
   );
 }
