@@ -1,5 +1,6 @@
 export const dynamic = "force-dynamic";
 import pool from "@/lib/db";
+import { mywebsiteurl } from "@/lib/myurl";
 import Image from "next/image";
 import Link from "next/link";
 export const metadata = {
@@ -23,8 +24,7 @@ export const metadata = {
       "All Blogs and guides listing about how to test Webcam, microphone and speaker tests and how run tests for your windows pc mac pc and mobile devices",
     image: "https://webcamtest.live/twitter-image.jpg",
   },
-  robots: "index, follow",
-  // canonical: "https://webcamtest.live/canonical-url",
+   // canonical: "https://webcamtest.live/canonical-url",
 };
 const Blog = async () => {
   const getallposts = async () => {
@@ -97,7 +97,13 @@ const BlogCard = ({
     <Link href={`/guides/${slug}`}>
       <section className="mb-5 w-full shadow-md p-3">
         <div className="mb-5 overflow-hidden rounded-lg">
-          <Image className="object-cover" alt="later on" src={image} width={320} height={320} />
+          <Image
+            className="object-cover"
+            alt="later on"
+            src={`${mywebsiteurl}${image}`}
+            width={320}
+            height={320}
+          />
         </div>
         <div>
           <span className="mb-3 inline-block rounded bg-primary py-1 text-center text-xs font-semibold leading-loose">

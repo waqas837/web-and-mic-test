@@ -37,7 +37,7 @@ function updateSitemapIndex(sitemapIndex) {
 
   const newSitemapEntry = `
     <sitemap>
-      <loc>${mywebsiteurl}.com/sitemaps/${sitemapFileName}</loc>
+      <loc>${mywebsiteurl}/sitemaps/${sitemapFileName}</loc>
       <lastmod>${new Date().toISOString()}</lastmod>
     </sitemap>
   `;
@@ -100,7 +100,7 @@ export async function appendPostToSitemap(post) {
 
   const sitemapEntry = `
     <url>
-      <loc>${mywebsiteurl}/posts/${post.slug}</loc>
+      <loc>${mywebsiteurl}/guides/${post.slug}</loc>
       <lastmod>${new Date(post.date_created_in).toISOString()}</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.7</priority>

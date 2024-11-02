@@ -1,6 +1,7 @@
 export const dynamic = "force-dynamic";
 import RelatedPosts from "@/components/RelatedPosts";
 import fetchSinglePost from "@/lib/fetchSinglePost";
+import { mywebsiteurl } from "@/lib/myurl";
 import Image from "next/image";
 
 export async function generateMetadata({ params }) {
@@ -15,7 +16,7 @@ export async function generateMetadata({ params }) {
 const PostDetailsPage = async ({ params }) => {
   const { slug } = params;
   const PostDetail = await fetchSinglePost(slug);
-
+   console.log(`${mywebsiteurl}${PostDetail.filePath}`)
   return (
     <div>
       <main className="pt-8 pb-16 lg:pt-16 lg:pb-24 dark:bg-gray-900 antialiased">
@@ -29,7 +30,7 @@ const PostDetailsPage = async ({ params }) => {
             <figure>
               <Image
                 alt={PostDetail.title}
-                src={PostDetail.filePath}
+                src={`${mywebsiteurl}${PostDetail.filePath}`}
                 width={300}
                 height={300}
                 className="w-full h-full"
