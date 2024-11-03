@@ -9,9 +9,10 @@ const Navbar = () => {
   const pathname = usePathname();
   const navItems = [
     { name: "Camera Test", href: "/" },
-    { name: "Microphone Test", href: "/microphone-test" },
+    { name: "Microphone Test", href: "/mic-test" },
     { name: "Speakers Test", href: "/speakers-test" },
     { name: "True Mirror", href: "/true-mirror-online" },
+    { name: "Webcam Toy", href: "/webcam-toy" },
   ];
 
   const instructionsItem = { name: "Guides", href: "/guides" };

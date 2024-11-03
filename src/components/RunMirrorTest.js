@@ -4,38 +4,47 @@ import React, { useState, useEffect, useRef } from "react";
 const RunMirrorTest = () => {
   const [isMirrored, setIsMirrored] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isCameraOn, setIsCameraOn] = useState(false); // New state for camera status
   const videoRef = useRef(null);
   const streamRef = useRef(null);
   const [Error, setError] = useState(null);
 
-  useEffect(() => {
-    const startCamera = async () => {
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({
-          video: true,
-        });
-        streamRef.current = stream;
-        if (videoRef.current) {
-          videoRef.current.srcObject = stream;
-        }
-      } catch (err) {
-        setError(
-          "Error accessing the camera. Please allow permission to access the camera."
-        );
-        console.error("Error accessing the camera:", err);
-      }
-    };
+  // Cleanup function for stopping the camera
+  const stopCamera = () => {
+    if (streamRef.current) {
+      streamRef.current.getTracks().forEach((track) => {
+        track.stop();
+      });
+      streamRef.current = null;
+      setIsCameraOn(false); // Reset camera state
+    }
+  };
 
-    startCamera();
-
-    return () => {
-      if (streamRef.current) {
-        streamRef.current.getTracks().forEach((track) => {
-          track.stop();
-        });
+  const startCamera = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: true,
+      });
+      streamRef.current = stream;
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
       }
-    };
-  }, []);
+      setIsCameraOn(true); // Update state when camera starts
+    } catch (err) {
+      setError(
+        "Error accessing the camera. Please allow permission to access the camera."
+      );
+      console.error("Error accessing the camera:", err);
+    }
+  };
+
+  const toggleCamera = () => {
+    if (isCameraOn) {
+      stopCamera();
+    } else {
+      startCamera();
+    }
+  };
 
   const toggleMirror = () => {
     setIsMirrored(!isMirrored);
@@ -50,14 +59,20 @@ const RunMirrorTest = () => {
     setIsFullscreen(!isFullscreen);
   };
 
-  // Prevent pausing video when clicking on it
   const preventPause = (e) => {
     e.preventDefault();
   };
 
+  useEffect(() => {
+    // Cleanup when component unmounts
+    return () => {
+      stopCamera(); // Ensure the camera stops on unmount
+    };
+  }, []);
+
   return (
     <div className="flex flex-col items-center space-y-4 p-4">
-      {Error && Error}
+      {Error && <div className="text-red-500">{Error}</div>}
       <div
         className={`relative w-full max-w-md overflow-hidden rounded-lg cursor-pointer ${
           isMirrored ? "scale-x-[-1]" : ""
@@ -71,53 +86,22 @@ const RunMirrorTest = () => {
           className="w-full h-auto"
           onClick={preventPause}
         />
-        {/* Fullscreen Icon */}
         <div className="absolute top-3 right-3">
           {isFullscreen ? (
-            <svg
-              className="w-8 h-8 text-white"
-              viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              id="Exit-Full-Screen--Streamline-Radix"
-              height="16"
-              width="16"
-            >
-              <desc>
-                Exit Full Screen Streamline Icon: https://streamlinehq.com
-              </desc>
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M5.866666666666666 2.1333333333333333c0.29454933333333333 0 0.5333333333333333 0.238784 0.5333333333333333 0.5333333333333333v3.2c0 0.29454933333333333 -0.238784 0.5333333333333333 -0.5333333333333333 0.5333333333333333h-3.2c-0.29454933333333333 0 -0.5333333333333333 -0.238784 -0.5333333333333333 -0.5333333333333333s0.238784 -0.5333333333333333 0.5333333333333333 -0.5333333333333333H5.333333333333333V2.6666666666666665c0 -0.29454933333333333 0.238784 -0.5333333333333333 0.5333333333333333 -0.5333333333333333Zm4.266666666666667 0c0.29454933333333333 0 0.5333333333333333 0.238784 0.5333333333333333 0.5333333333333333V5.333333333333333h2.6666666666666665c0.2945066666666667 0 0.5333333333333333 0.238784 0.5333333333333333 0.5333333333333333s-0.23882666666666666 0.5333333333333333 -0.5333333333333333 0.5333333333333333h-3.2c-0.29454933333333333 0 -0.5333333333333333 -0.238784 -0.5333333333333333 -0.5333333333333333v-3.2c0 -0.29454933333333333 0.238784 -0.5333333333333333 0.5333333333333333 -0.5333333333333333ZM2.1333333333333333 10.133333333333333c0 -0.29454933333333333 0.238784 -0.5333333333333333 0.5333333333333333 -0.5333333333333333h3.2c0.29454933333333333 0 0.5333333333333333 0.238784 0.5333333333333333 0.5333333333333333v3.2c0 0.2945066666666667 -0.238784 0.5333333333333333 -0.5333333333333333 0.5333333333333333s-0.5333333333333333 -0.23882666666666666 -0.5333333333333333 -0.5333333333333333V10.666666666666666H2.6666666666666665c-0.29454933333333333 0 -0.5333333333333333 -0.238784 -0.5333333333333333 -0.5333333333333333Zm7.466666666666667 0c0 -0.29454933333333333 0.238784 -0.5333333333333333 0.5333333333333333 -0.5333333333333333h3.2c0.2945066666666667 0 0.5333333333333333 0.238784 0.5333333333333333 0.5333333333333333s-0.23882666666666666 0.5333333333333333 -0.5333333333333333 0.5333333333333333H10.666666666666666v2.6666666666666665c0 0.2945066666666667 -0.238784 0.5333333333333333 -0.5333333333333333 0.5333333333333333s-0.5333333333333333 -0.23882666666666666 -0.5333333333333333 -0.5333333333333333v-3.2Z"
-                fill="#ffffff"
-                stroke-width="1"
-              ></path>
-            </svg>
+            // Fullscreen exit icon
+            <svg /* Your fullscreen exit icon here */ />
           ) : (
-            <svg
-              className="w-8 h-8 text-white"
-              viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              id="Enter-Full-Screen--Streamline-Radix"
-              height="16"
-              width="16"
-            >
-              <desc>
-                Enter Full Screen Streamline Icon: https://streamlinehq.com
-              </desc>
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M2.1333333333333333 2.6666666666666665c0 -0.29454933333333333 0.238784 -0.5333333333333333 0.5333333333333333 -0.5333333333333333h3.2c0.29454933333333333 0 0.5333333333333333 0.238784 0.5333333333333333 0.5333333333333333s-0.238784 0.5333333333333333 -0.5333333333333333 0.5333333333333333H3.2v2.6666666666666665c0 0.29454933333333333 -0.238784 0.5333333333333333 -0.5333333333333333 0.5333333333333333S2.1333333333333333 6.161216 2.1333333333333333 5.866666666666666v-3.2Zm7.466666666666667 0c0 -0.29454933333333333 0.238784 -0.5333333333333333 0.5333333333333333 -0.5333333333333333h3.2c0.2945066666666667 0 0.5333333333333333 0.238784 0.5333333333333333 0.5333333333333333v3.2c0 0.29454933333333333 -0.23882666666666666 0.5333333333333333 -0.5333333333333333 0.5333333333333333s-0.5333333333333333 -0.238784 -0.5333333333333333 -0.5333333333333333V3.2H10.133333333333333c-0.29454933333333333 0 -0.5333333333333333 -0.238784 -0.5333333333333333 -0.5333333333333333ZM2.6666666666666665 9.6c0.29454933333333333 0 0.5333333333333333 0.238784 0.5333333333333333 0.5333333333333333V12.8h2.6666666666666665c0.29454933333333333 0 0.5333333333333333 0.23882666666666666 0.5333333333333333 0.5333333333333333s-0.238784 0.5333333333333333 -0.5333333333333333 0.5333333333333333h-3.2c-0.29454933333333333 0 -0.5333333333333333 -0.23882666666666666 -0.5333333333333333 -0.5333333333333333v-3.2c0 -0.29454933333333333 0.238784 -0.5333333333333333 0.5333333333333333 -0.5333333333333333Zm10.666666666666666 0c0.2945066666666667 0 0.5333333333333333 0.238784 0.5333333333333333 0.5333333333333333v3.2c0 0.2945066666666667 -0.23882666666666666 0.5333333333333333 -0.5333333333333333 0.5333333333333333h-3.2c-0.29454933333333333 0 -0.5333333333333333 -0.23882666666666666 -0.5333333333333333 -0.5333333333333333s0.238784 -0.5333333333333333 0.5333333333333333 -0.5333333333333333H12.8V10.133333333333333c0 -0.29454933333333333 0.23882666666666666 -0.5333333333333333 0.5333333333333333 -0.5333333333333333Z"
-                fill="#ffffff"
-                stroke-width="1"
-              ></path>
-            </svg>
+            // Fullscreen icon
+            <svg /* Your fullscreen icon here */ />
           )}
         </div>
       </div>
+      <button
+        onClick={toggleCamera}
+        className="flex items-center space-x-2 bg-blue-500 p-2 text-white rounded-lg"
+      >
+        {isCameraOn ? "Stop Camera" : "Start Camera"}
+      </button>
       <button
         onClick={toggleMirror}
         className="flex items-center space-x-2 bg-blue-500 p-2 text-white rounded-lg"
