@@ -1,29 +1,14 @@
-import { cameraIcon } from "@/assets/SvgIcons";
 import RunMirrorTest from "@/components/RunMirrorTest";
 import Link from "next/link";
 
 export const metadata = {
-  title: "True Mirror Online - Webcamtest",
+  title: "True Mirror Online - Watch yourself in real",
   description:
     "Easily access the mirror view in the web camera on your desktop or mobile. Watch yourself in the real view and see how you look in the real World.",
-  keywords: ["keyword1", "keyword2", "keyword3"],
-  openGraph: {
-    title: "Your Open Graph Title",
-    description: "A description for social media sharing",
-    type: "website",
-    url: "https://www.yourwebsite.com/your-page",
-    image: "https://www.yourwebsite.com/og-image.jpg",
+  keywords: ["True Mirror Online", "real mirror online", "true mirror"],
+  alternates: {
+    canonical: `https://webcamtest.live/true-mirror-online`,
   },
-  twitter: {
-    card: "summary_large_image",
-    site: "@yourtwitterhandle",
-    title: "Your Twitter Card Title",
-    description: "A description for Twitter sharing",
-    image: "https://www.yourwebsite.com/twitter-image.jpg",
-  },
-  robots: "index, follow",
-  canonical: "https://www.yourwebsite.com/canonical-url",
-  author: "Your Name or Company Name",
 };
 
 const TrueMirror = () => {
@@ -68,7 +53,7 @@ const TrueMirror = () => {
               </li>
               <li className="text-gray-800">
                 If you have already denied the camera access, you can change
-                them in browser preferences. For more understanding see our easy 
+                them in browser preferences. For more understanding see our easy
                 <Link href={"/guides"}>guides</Link>
               </li>
             </ol>

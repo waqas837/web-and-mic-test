@@ -2,28 +2,28 @@ import Link from "next/link";
 import RunSpeakersTest from "@/components/Tests/RunSpeakersTest";
 
 export const metadata = {
-  title: "Sound Test Free- Enjoy",
+  title: "Sound Test Free- Check right and left speakers",
   description:
     "Free resource for testing your audio and sound. Check if your speakers are connected or not. Start Testing.",
-  keywords: ["keyword1", "keyword2", "keyword3"],
+  keywords: ["speakers test", "sound test", "right left speaker test"],
   openGraph: {
-    title: "Sound Test Free- Enjoy",
+    title: "Sound Test Free- Check right and left speakers",
     description:
       "Free resource for testing your audio and sound. Check if your speakers are connected or not. Start Testing",
     type: "website",
-    url: "https://webcamtest.live/",
-    image: "https://www.yourwebsite.com/og-image.jpg",
+    image: "https://webcamtest.live/twitter-image.jpg",
   },
   twitter: {
     card: "summary_large_image",
     site: "@yourtwitterhandle",
-    title: "Sound Test Free- Enjoy",
+    title: "Sound Test Free- Check right and left speakers",
     description:
       "Free resource for testing your audio and sound. Check if your speakers are connected or not. Start Testing",
     image: "https://webcamtest.live/twitter-image.jpg",
   },
-  robots: "index, follow",
-  // canonical: "https://webcamtest.live/canonical-url",
+  alternates: {
+    canonical: `https://webcamtest.live/speakers-test`,
+  },
 };
 
 const SpeakerTest = () => {

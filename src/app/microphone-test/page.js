@@ -2,28 +2,27 @@ import Link from "next/link";
 import RunMicTest from "@/components/Tests/RunMicTest";
 
 export const metadata = {
-  title: "Test Microphone Online - Enjoy free",
+  title: "Test Mic Online - Record and Test your mic",
   description:
     "Free resource for testing your Microphone and It is easy to test, as your it recognize your voice it shows realtime visualizations. Start Testing.",
   keywords: ["keyword1", "keyword2", "keyword3"],
   openGraph: {
-    title: "Test Microphone Online - Enjoy free",
+    title: "Test Mic Online - Record and Test your mic",
     description:
       "Free resource for testing your Microphone and It is easy to test, as your it recognize your voice it shows realtime visualizations. Start Testing",
     type: "website",
-    url: "https://webcamtest.live/",
-    image: "https://www.yourwebsite.com/og-image.jpg",
+    image: "https://webcamtest.live/twitter-image.jpg",
   },
   twitter: {
     card: "summary_large_image",
-    site: "@yourtwitterhandle",
-    title: "Test Microphone Online - Enjoy free",
+    title: "Test Mic Online - Record and Test your mic",
     description:
       "Free resource for testing your Microphone and It is easy to test, as your it recognize your voice it shows realtime visualizations. Start Testing",
     image: "https://webcamtest.live/twitter-image.jpg",
   },
-  robots: "index, follow",
-  // canonical: "https://webcamtest.live/canonical-url",
+  alternates: {
+    canonical: `https://webcamtest.live/microphone-test`,
+  },
 };
 
 const MicrophoneTest = () => {
