@@ -11,7 +11,7 @@ const Navbar = () => {
     { name: "Camera Test", href: "/" },
     { name: "Microphone Test", href: "/mic-test" },
     { name: "Speakers Test", href: "/speakers-test" },
-    { name: "True Mirror", href: "/true-mirror-online" },
+    { name: "True Mirror", href: "/true-mirror" },
     { name: "Webcam Toy", href: "/webcam-toy" },
   ];
 
