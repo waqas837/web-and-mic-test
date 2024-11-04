@@ -7,7 +7,7 @@ export const metadata = {
     "Easily access the mirror view in the web camera on your desktop or mobile. Watch yourself in the real view and see how you look in the real World.",
   keywords: ["True Mirror Online", "real mirror online", "true mirror"],
   alternates: {
-    canonical: `https://webcamtest.live/true-mirror-online`,
+    canonical: `https://webcamtest.live/true-mirror`,
   },
 };
 

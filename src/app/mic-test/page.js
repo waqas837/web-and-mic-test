@@ -21,7 +21,7 @@ export const metadata = {
     image: "https://webcamtest.live/twitter-image.jpg",
   },
   alternates: {
-    canonical: `https://webcamtest.live/microphone-test`,
+    canonical: `https://webcamtest.live/mic-test`,
   },
 };
 
