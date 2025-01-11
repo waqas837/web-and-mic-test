@@ -6,10 +6,10 @@ const HeroSection = () => {
     <section className="py-16 sm:mb-10 md:my-10">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
-          Free WebCam Test Online
+          Webcam Test Online
         </h1>
         <p className="text-xl text-gray-700 mb-8">
-          Free Tool for testing your camera, Click on the start buttion and you
+          Free Tool for Webcam Test, Click on the start buttion and you
           will find a very helpful information about your working webcam.
         </p>
         {/*RunWebcamTest Client component */}

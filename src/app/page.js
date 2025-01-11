@@ -2,14 +2,14 @@ import lazyload from "next/dynamic";
 const HeroSection = lazyload(() => import("../components/HeroSection"));
 
 export const metadata = {
-  title: "Webcam Test Free - Enjoy free",
+  title: "Webcam Test - Test Online Free",
   description:
-    "Free resource for testing your webcam and providing extra functions like resolution checker and FPS checker. Start Testing.",
+    "Free resource for Webcam Test and providing extra functions like resolution checker and FPS checker. Start Testing.",
   keywords: ["keyword1", "keyword2", "keyword3"],
   openGraph: {
-    title: "Webcam Test Free - Enjoy free",
+    title: "Webcam Test - Test Online Free",
     description:
-      "Free resource for testing your webcam and providing extra functions like resolution checker and FPS checker. Start Testing",
+      "Free resource for Webcam Test and providing extra functions like resolution checker and FPS checker. Start Testing",
     type: "website",
     url: "https://webcamtest.live/",
     image: "https://www.yourwebsite.com/og-image.jpg",
@@ -17,9 +17,9 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@yourtwitterhandle",
-    title: "Webcam Test Free - Enjoy free",
+    title: "Webcam Test - Test Online Free",
     description:
-      "Free resource for testing your webcam and providing extra functions like resolution checker and FPS checker. Start Testing",
+      "Free resource for Webcam Test and providing extra functions like resolution checker and FPS checker. Start Testing",
     image: "https://webcamtest.live/twitter-image.jpg",
   },
   robots: "index, follow",
